@@ -5,20 +5,25 @@ import '../bloc/music_state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class AlbumCoverWidget extends StatefulWidget {
-  const AlbumCoverWidget({required this.imageUrl, super.key});
+  const AlbumCoverWidget({required this.imageUrl, super.key, this.size = 50});
   final String imageUrl;
+  final double size;
 
   @override
   State<AlbumCoverWidget> createState() => _AlbumCoverWidgetState();
 }
 
-class _AlbumCoverWidgetState extends State<AlbumCoverWidget> with SingleTickerProviderStateMixin {
+class _AlbumCoverWidgetState extends State<AlbumCoverWidget>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 10))..repeat();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 10),
+    )..repeat();
   }
 
   @override
@@ -31,15 +36,17 @@ class _AlbumCoverWidgetState extends State<AlbumCoverWidget> with SingleTickerPr
   Widget build(final BuildContext context) {
     return BlocBuilder<MusicCubit, MusicState>(
       builder: (final BuildContext context, final MusicState state) {
-        final bool isPlaying = state.isPlaying && state.currentTrack?.albumCover == widget.imageUrl;
+        final bool isPlaying =
+            state.isPlaying &&
+            state.currentTrack?.albumCover == widget.imageUrl;
         return RotationTransition(
           turns: isPlaying ? _controller : const AlwaysStoppedAnimation(0),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: CachedNetworkImage(
               imageUrl: widget.imageUrl,
-              width: 50,
-              height: 50,
+              width: widget.size,
+              height: widget.size,
               fit: BoxFit.cover,
             ),
           ),
