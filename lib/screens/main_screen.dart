@@ -1,7 +1,8 @@
+import 'package:beatbox_app/screens/favorites_screen.dart';
+import 'package:beatbox_app/screens/home_screen.dart';
+import 'package:beatbox_app/screens/search_screen.dart';
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
-import 'search_screen.dart';
-import 'favorites_screen.dart';
+
 import '../widgets/mini_player.dart';
 
 class MainScreen extends StatefulWidget {
@@ -20,12 +21,9 @@ class _MainScreenState extends State<MainScreen> {
     FavoritesScreen(),
   ];
 
-  final List<String> _titles = <String>["Popüler Şarkılar", "Ara", "Favoriler"];
-
   @override
   Widget build(final BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_titles[_currentIndex])),
       body: Stack(
         children: <Widget>[
           _screens[_currentIndex],
@@ -33,16 +31,17 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xFF1DB954),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         currentIndex: _currentIndex,
-        selectedItemColor: Colors.deepPurple,
-        unselectedItemColor: Colors.grey,
         onTap: (final int index) => setState(() => _currentIndex = index),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Ara"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: "Favoriler",
+            icon: Icon(Icons.library_music),
+            label: "Your Library",
           ),
         ],
       ),
