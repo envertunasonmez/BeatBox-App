@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/music_cubit.dart';
-import '../bloc/music_state.dart';
-import 'album_cover_widget.dart';
+import 'package:beatbox_app/bloc/music_cubit.dart';
+import 'package:beatbox_app/bloc/music_state.dart';
+import 'package:beatbox_app/widgets/album_cover_widget.dart';
 
 class MiniPlayer extends StatelessWidget {
   const MiniPlayer({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return BlocBuilder<MusicCubit, MusicState>(
-      builder: (context, state) {
+      builder: (final context, final state) {
         final track = state.currentTrack;
-        if (track == null) return const SizedBox.shrink();
+        if (track == null) {
+          return const SizedBox.shrink();
+        }
 
         return Container(
           height: 70,
@@ -23,7 +25,6 @@ class MiniPlayer extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: AlbumCoverWidget(
                   imageUrl: track.albumCover,
-                  size: 50,
                 ),
               ),
               Expanded(

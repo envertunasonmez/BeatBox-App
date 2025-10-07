@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bloc/music_cubit.dart';
-import 'screens/main_screen.dart';
+import 'package:beatbox_app/bloc/music_cubit.dart';
+import 'package:beatbox_app/screens/main_screen.dart';
 
 void main() {
   runApp(const BeatBoxApp());

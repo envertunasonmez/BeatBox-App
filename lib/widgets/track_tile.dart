@@ -1,9 +1,9 @@
 import 'package:beatbox_app/data/models/track_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/music_cubit.dart';
-import '../bloc/music_state.dart';
-import 'album_cover_widget.dart';
+import 'package:beatbox_app/bloc/music_cubit.dart';
+import 'package:beatbox_app/bloc/music_state.dart';
+import 'package:beatbox_app/widgets/album_cover_widget.dart';
 
 class TrackTile extends StatelessWidget {
   const TrackTile({required this.track, super.key});

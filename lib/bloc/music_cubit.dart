@@ -3,7 +3,7 @@ import 'package:beatbox_app/data/services/api_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 
-import 'music_state.dart';
+import 'package:beatbox_app/bloc/music_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MusicCubit extends Cubit<MusicState> {

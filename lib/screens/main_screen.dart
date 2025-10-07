@@ -3,7 +3,7 @@ import 'package:beatbox_app/screens/home_screen.dart';
 import 'package:beatbox_app/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/mini_player.dart';
+import 'package:beatbox_app/widgets/mini_player.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

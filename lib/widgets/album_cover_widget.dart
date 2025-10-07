@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/music_cubit.dart';
-import '../bloc/music_state.dart';
+import 'package:beatbox_app/bloc/music_cubit.dart';
+import 'package:beatbox_app/bloc/music_state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class AlbumCoverWidget extends StatefulWidget {

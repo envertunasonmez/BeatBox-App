@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../models/track_model.dart';
+import 'package:beatbox_app/data/models/track_model.dart';
 
 class ApiService {
   static const String popularUrl = "https://api.deezer.com/chart/0/tracks";
