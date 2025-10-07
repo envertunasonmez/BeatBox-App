@@ -17,29 +17,55 @@ class TrackTile extends StatelessWidget {
         final bool isPlaying = isCurrent && state.isPlaying;
         final bool isFavorite = state.favoriteTrackIds.contains(track.id);
 
-        return LayoutBuilder(builder: (final BuildContext context, final BoxConstraints constraints) {
-          final bool isWide = constraints.maxWidth > 600;
-          return ListTile(
-            leading: AlbumCoverWidget(imageUrl: track.albumCover),
-            title: Text(track.title, maxLines: 1, overflow: TextOverflow.ellipsis),
-            subtitle: Text(track.artist),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border, color: Colors.red),
-                  onPressed: () => context.read<MusicCubit>().toggleFavorite(track),
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: const Color(0xFF1E1E1E),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Row(
+            children: <Widget>[
+              AlbumCoverWidget(imageUrl: track.albumCover),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      track.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      track.artist,
+                      style: const TextStyle(color: Colors.white70),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
-                IconButton(
-                  icon: Icon(isPlaying ? Icons.pause_circle : Icons.play_circle),
-                  iconSize: isWide ? 40 : 32,
-                  color: Colors.deepPurple,
-                  onPressed: () => context.read<MusicCubit>().playTrack(track),
+              ),
+              IconButton(
+                icon: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: Colors.greenAccent,
                 ),
-              ],
-            ),
-          );
-        });
+                onPressed: () =>
+                    context.read<MusicCubit>().toggleFavorite(track),
+              ),
+              IconButton(
+                icon: Icon(
+                  isPlaying ? Icons.pause_circle : Icons.play_circle,
+                  color: Colors.greenAccent,
+                ),
+                onPressed: () => context.read<MusicCubit>().playTrack(track),
+              ),
+            ],
+          ),
+        );
       },
     );
   }
