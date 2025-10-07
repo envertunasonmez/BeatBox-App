@@ -17,8 +17,14 @@ class BeatBoxApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'BeatBox',
-        theme: ThemeData(primarySwatch: Colors.deepPurple, brightness: Brightness.light),
-        darkTheme: ThemeData(primarySwatch: Colors.deepPurple, brightness: Brightness.dark),
+        theme: ThemeData.dark().copyWith(
+          primaryColor: Colors.greenAccent,
+          scaffoldBackgroundColor: const Color(0xFF121212),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xFF121212),
+            elevation: 0,
+          ),
+        ),
         home: const MainScreen(),
       ),
     );
